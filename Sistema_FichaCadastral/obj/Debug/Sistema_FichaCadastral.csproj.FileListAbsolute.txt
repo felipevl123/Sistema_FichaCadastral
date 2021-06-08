@@ -1,0 +1,7 @@
+C:\Users\Felipe\Desktop\Projeto_Pratica\Sistema_FichaCadastral\Sistema_FichaCadastral\bin\Debug\Sistema_FichaCadastral.exe.config
+C:\Users\Felipe\Desktop\Projeto_Pratica\Sistema_FichaCadastral\Sistema_FichaCadastral\bin\Debug\Sistema_FichaCadastral.exe
+C:\Users\Felipe\Desktop\Projeto_Pratica\Sistema_FichaCadastral\Sistema_FichaCadastral\bin\Debug\Sistema_FichaCadastral.pdb
+C:\Users\Felipe\Desktop\Projeto_Pratica\Sistema_FichaCadastral\Sistema_FichaCadastral\obj\Debug\Sistema_FichaCadastral.csprojAssemblyReference.cache
+C:\Users\Felipe\Desktop\Projeto_Pratica\Sistema_FichaCadastral\Sistema_FichaCadastral\obj\Debug\Sistema_FichaCadastral.csproj.CoreCompileInputs.cache
+C:\Users\Felipe\Desktop\Projeto_Pratica\Sistema_FichaCadastral\Sistema_FichaCadastral\obj\Debug\Sistema_FichaCadastral.exe
+C:\Users\Felipe\Desktop\Projeto_Pratica\Sistema_FichaCadastral\Sistema_FichaCadastral\obj\Debug\Sistema_FichaCadastral.pdb
