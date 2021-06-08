@@ -22,7 +22,7 @@ namespace Sistema_FichaCadastral
 
             Cadastrar(listaDeCadastrados);
 
-            //IterarListaCadastro(listaDeCadastrados);
+            IterarListaCadastro(listaDeCadastrados);
 
             while (fechar == false)
             {
@@ -88,44 +88,41 @@ namespace Sistema_FichaCadastral
             {
                 Console.Write("Digite seu nome:");
                 nomeUnicoUso = Console.ReadLine();
-                if (String.IsNullOrEmpty(nomeUnicoUso))
+                //if (String.IsNullOrEmpty(nomeUnicoUso))
+                //{
+                //    Console.WriteLine("Nome deve ser preenchido");
+                //    Console.WriteLine();
+                //    continue;
+                //}
+                Console.Write("Digite sua idade:");
+                var idade = Console.ReadLine();
+                // Verifica se a idade digitada em idade é numero, caso sim, guarda na variavel idade
+                var testaInt = int.TryParse(idade, out idadeEmInt);
+                if ((testaInt != true) || String.IsNullOrEmpty(nomeUnicoUso))
                 {
-                    Console.WriteLine("Nome deve ser preenchido");
+                    Console.WriteLine("Informações incorretas");
+                    Console.WriteLine("Não deve conter espaços em branco e idade deve ser em digito");
                     Console.WriteLine();
                     continue;
                 }
-                Console.Write("Digite sua idade:");
-                var idade = Console.ReadLine();
-                
 
-                valida = int.TryParse(idade, out idadeEmInt);
-                if(valida != true)
+                Console.WriteLine("Deu tudo certo!");
+                Console.WriteLine();
+
+                if (lista.Exists(x => x.Nome == nomeUnicoUso))
                 {
-                    Console.WriteLine("idade deve ser digitada em digito");
+                    Console.WriteLine($"Já existe uma pessoa com o nome de usuario {nomeUnicoUso}");
+                    Console.WriteLine("Digite novamente as informações");
                     Console.WriteLine();
+                    continue;
                 }
-            }
 
-            Console.WriteLine("Deu tudo certo!");
-            
-            // Tentar resolver o problema com ReadLine onde não lê int
-            
-            if (lista.Exists(x => x.Nome == nomeUnicoUso))
-            {
-                Console.WriteLine("esse nome ja existe");
+                valida = true;
             }
 
             lista.Add(new FichaCadastral(nomeUnicoUso, idadeEmInt));
             Console.WriteLine("Cadastrado realizado com sucesso. Tecle enter para voltar a tela de inicio");
             Console.ReadLine();
-
-            
         }
-
-        
-
-
-
-
     }
 }
