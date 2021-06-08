@@ -12,13 +12,19 @@ namespace Sistema_FichaCadastral
         {
             Console.WriteLine("Bem vindo ao Gerenciador de ficha cadastral");
 
-            //Cadastrar();
+
 
             bool fechar = false;
 
             var listaDeCadastrados = new List<FichaCadastral>();
 
-            while(fechar == false)
+            listaDeCadastrados.Add(new FichaCadastral("Daniel", 18));
+
+            Cadastrar(listaDeCadastrados);
+
+            //IterarListaCadastro(listaDeCadastrados);
+
+            while (fechar == false)
             {
                 fechar = SelecaoMenu(fechar);
             }
@@ -28,6 +34,16 @@ namespace Sistema_FichaCadastral
 
         }
 
+        private static void IterarListaCadastro(List<FichaCadastral> lista)
+        {
+            foreach (var ficha in lista)
+            {
+                Console.WriteLine(ficha);
+            }
+
+            Console.WriteLine("Terminou...");
+            Console.WriteLine();
+        }
 
         public static bool SelecaoMenu(bool fechar)
         {
@@ -65,7 +81,8 @@ namespace Sistema_FichaCadastral
         public static void Cadastrar(List<FichaCadastral> lista)
         {
             bool valida = false;
-            string nomeUnicoUso;
+            string nomeUnicoUso = null;
+            int idadeEmInt = -1;
 
             while (valida != true)
             {
@@ -79,7 +96,7 @@ namespace Sistema_FichaCadastral
                 }
                 Console.Write("Digite sua idade:");
                 var idade = Console.ReadLine();
-                int idadeEmInt;
+                
 
                 valida = int.TryParse(idade, out idadeEmInt);
                 if(valida != true)
@@ -89,28 +106,23 @@ namespace Sistema_FichaCadastral
                 }
             }
 
+            Console.WriteLine("Deu tudo certo!");
             
             // Tentar resolver o problema com ReadLine onde não lê int
             
-            //if (lista.Exists(x => x.Nome == nomeUnicoUso))
+            if (lista.Exists(x => x.Nome == nomeUnicoUso))
             {
-
+                Console.WriteLine("esse nome ja existe");
             }
 
-            //lista.Add(new FichaCadastral(nomeUnicoUso, idadeUnicoUso));
+            lista.Add(new FichaCadastral(nomeUnicoUso, idadeEmInt));
+            Console.WriteLine("Cadastrado realizado com sucesso. Tecle enter para voltar a tela de inicio");
+            Console.ReadLine();
+
             
         }
 
-        public static bool ValidarDados(string nome)
-        {
-            if (String.IsNullOrEmpty(nome))
-            {
-                Console.WriteLine("Dados impossiveis de serem inseridos");
-                return false;
-            }
-            return true;
-
-        }
+        
 
 
 

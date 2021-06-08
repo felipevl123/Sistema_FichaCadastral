@@ -24,9 +24,12 @@ namespace Sistema_FichaCadastral
             IdCadastro = 100 * idade + (randNum.Next());
         }
 
-        
+        public override string ToString()
+        {
+            return $"Nome: {Nome}, Idade: {Idade}";
+        }
 
-        
-       
+
+
     }
 }
