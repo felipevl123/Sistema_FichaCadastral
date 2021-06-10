@@ -15,20 +15,16 @@ namespace Sistema_FichaCadastral
         public string Profisao { get; private set; }
         public int IdCadastro { get ; set ; }
 
-        int iterador = 1;
-
         public FichaCadastral(string nome, int idade)
         {
             Nome = nome;    
             Idade = idade;
         }
 
+
         public override string ToString()
         {
             return $"Nome: {Nome}, Idade: {Idade}, Id de cadastro {IdCadastro}";
         }
-
-
-
     }
 }
