@@ -16,17 +16,16 @@ namespace Sistema_FichaCadastral
 
             bool fechar = false;
 
-            var listaDeCadastrados = new List<FichaCadastral>();
+            var listaDeCadastrados = new ListaDeFichas<FichaCadastral>();
 
             listaDeCadastrados.Add(new FichaCadastral("Daniel", 18));
 
             Cadastrar(listaDeCadastrados);
 
-            IterarListaCadastro(listaDeCadastrados);
 
             while (fechar == false)
             {
-                fechar = SelecaoMenu(fechar);
+                fechar = SelecaoMenu(fechar, listaDeCadastrados);
             }
 
             Console.Clear();
@@ -34,7 +33,7 @@ namespace Sistema_FichaCadastral
 
         }
 
-        private static void IterarListaCadastro(List<FichaCadastral> lista)
+        private static void IterarListaCadastro(ListaDeFichas<FichaCadastral> lista)
         {
             foreach (var ficha in lista)
             {
@@ -45,7 +44,7 @@ namespace Sistema_FichaCadastral
             Console.WriteLine();
         }
 
-        public static bool SelecaoMenu(bool fechar)
+        public static bool SelecaoMenu(bool fechar, ListaDeFichas<FichaCadastral> lista)
         {
             Console.WriteLine();
             Console.WriteLine("Selecione um menu:");
@@ -57,12 +56,14 @@ namespace Sistema_FichaCadastral
             {
                 case 1:
                     Console.WriteLine($"Você escolheu {Menu.Visualizar}");
+                    IterarListaCadastro(lista);
                     break;
                 case 2:
                     Console.WriteLine($"Você escolheu {Menu.Editar}");
                     break;
                 case 3:
                     Console.WriteLine($"Você escolheu {Menu.Criar}");
+                    Cadastrar(lista);
                     break;
                 case 4:
                     return fechar = true;
@@ -78,7 +79,7 @@ namespace Sistema_FichaCadastral
             return fechar = false;
         }
 
-        public static void Cadastrar(List<FichaCadastral> lista)
+        public static void Cadastrar(ListaDeFichas<FichaCadastral> lista)
         {
             bool valida = false;
             string nomeUnicoUso = null;
@@ -120,9 +121,27 @@ namespace Sistema_FichaCadastral
                 valida = true;
             }
 
-            lista.Add(new FichaCadastral(nomeUnicoUso, idadeEmInt));
-            Console.WriteLine("Cadastrado realizado com sucesso. Tecle enter para voltar a tela de inicio");
-            Console.ReadLine();
+            Console.WriteLine($"Informações:\n" +
+                $" Nome {nomeUnicoUso} \n" +
+                $" Idade {idadeEmInt}");
+
+            Console.WriteLine("Confirmar dados e salvar? \n" +
+                "1- Sim.   2-Não");
+            var selecao = Console.ReadLine();
+            int nSelecao = int.Parse(selecao);
+
+            switch (nSelecao)
+            {
+                case 1:
+                    lista.Add(new FichaCadastral(nomeUnicoUso, idadeEmInt));
+                    Console.WriteLine("Cadastrado realizado com sucesso. Tecle enter para voltar a tela de inicio");
+                    Console.ReadLine();
+                    break;
+
+                default:
+                    Console.WriteLine("Por gentileza realizar o cadastro novamente");
+                    break;
+            }
         }
     }
 }

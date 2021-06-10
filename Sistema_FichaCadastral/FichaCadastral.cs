@@ -7,26 +7,25 @@ using System.Threading.Tasks;
 
 namespace Sistema_FichaCadastral
 {
-    public class FichaCadastral 
+    public class FichaCadastral : IIdentity
     {
 
         public string Nome { get; private set; }
         public int Idade { get; private set; }
         public string Profisao { get; private set; }
-        public int IdCadastro { get; }
+        public int IdCadastro { get ; set ; }
+
+        int iterador = 1;
 
         public FichaCadastral(string nome, int idade)
         {
-            Nome = nome;
+            Nome = nome;    
             Idade = idade;
-            var randNum = new Random();
-
-            IdCadastro = 100 * idade + (randNum.Next());
         }
 
         public override string ToString()
         {
-            return $"Nome: {Nome}, Idade: {Idade}";
+            return $"Nome: {Nome}, Idade: {Idade}, Id de cadastro {IdCadastro}";
         }
 
 
