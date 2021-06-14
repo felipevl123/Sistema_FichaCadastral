@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Consulta.cs" />
     <Compile Include="FichaCadastral.cs" />
     <Compile Include="IIdentity.cs" />
     <Compile Include="ListaDeFichas.cs" />

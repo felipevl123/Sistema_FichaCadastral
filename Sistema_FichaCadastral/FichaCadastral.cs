@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Sistema_FichaCadastral
 {
-    public class FichaCadastral : IIdentity
+    public class FichaCadastral : IIdentity, IComparable
     {
 
         public string Nome { get; private set; }
@@ -21,10 +21,16 @@ namespace Sistema_FichaCadastral
             Idade = idade;
         }
 
-
         public override string ToString()
         {
             return $"Nome: {Nome}, Idade: {Idade}, Id de cadastro {IdCadastro}";
+        }
+
+        public int CompareTo(object obj)
+        {
+            var ficha = (FichaCadastral)obj;
+
+            return Nome.CompareTo(ficha.Nome);
         }
     }
 }

@@ -33,16 +33,7 @@ namespace Sistema_FichaCadastral
 
         }
 
-        private static void IterarListaCadastro(ListaDeFichas<FichaCadastral> lista)
-        {
-            foreach (var ficha in lista)
-            {
-                Console.WriteLine(ficha);
-            }
-
-            Console.WriteLine("Terminou...");
-            Console.WriteLine();
-        }
+        
 
         public static bool SelecaoMenu(bool fechar, ListaDeFichas<FichaCadastral> lista)
         {
@@ -56,7 +47,17 @@ namespace Sistema_FichaCadastral
             {
                 case 1:
                     Console.WriteLine($"Você escolheu {Menu.Visualizar}");
-                    IterarListaCadastro(lista);
+
+                    Console.WriteLine("Visualizar Lista completa - 1" +
+                        "\nFiltrar Lista - 2");
+                    var input = Console.ReadLine();
+
+                    if(input == "1")
+                        Consulta.All_List(lista);
+
+                    else
+                        Consulta.FilterFicha(lista, 18);
+
                     break;
                 case 2:
                     Console.WriteLine($"Você escolheu {Menu.Editar}");
