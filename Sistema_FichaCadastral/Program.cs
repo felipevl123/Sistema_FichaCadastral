@@ -12,21 +12,14 @@ namespace Sistema_FichaCadastral
         {
             Console.WriteLine("Bem vindo ao Gerenciador de ficha cadastral");
 
-
-
-            bool fechar = false;
-
             var listaDeCadastrados = new ListaDeFichas<FichaCadastral>();
 
-            listaDeCadastrados.Add(new FichaCadastral("Daniel", 18, "Carpinteiro"));
+            Console.WriteLine("Cadastre sua primeira conta\n");
 
             Cadastrar(listaDeCadastrados);
 
-
-            while (fechar == false)
-            {
-                fechar = SelecaoMenu(fechar, listaDeCadastrados);
-            }
+             SelecaoMenu(listaDeCadastrados);
+            
 
             Console.Clear();
             Console.ReadLine();
@@ -40,12 +33,8 @@ namespace Sistema_FichaCadastral
             bool fechar = false;
             while (fechar != true)
             {
-
-
-                Console.WriteLine();
-                Console.WriteLine("Selecione um menu:");
-                Console.WriteLine();
-                Console.WriteLine($"1-Visualizar   2- Criar 3- Sair");
+                Console.WriteLine("\nSelecione um menu:\n");
+                Console.WriteLine($"1-Visualizar contas  || 2- Criar conta nova  || 3- Sair");
 
                 var inputConsole = Console.ReadLine();
                 int numeroMenu;
@@ -58,9 +47,9 @@ namespace Sistema_FichaCadastral
                 switch (numeroMenu)
                 {
                     case 1:
-                        Console.WriteLine($"Você escolheu Visualizar");
+                        Console.WriteLine($"\nVocê escolheu Visualizar");
 
-                        Console.WriteLine("Visualizar Lista completa - 1" +
+                        Console.WriteLine("\nVisualizar Lista completa - 1" +
                             "\nFiltrar Lista - 2");
                         var input = Console.ReadLine();
 
@@ -75,25 +64,26 @@ namespace Sistema_FichaCadastral
                             continue;
                         }
                         
-
                         break;
+
 
                     case 2:
                         Console.WriteLine($"Você escolheu Criar");
                         Cadastrar(lista);
                         break;
 
+
                     case 3:
                         fechar = true;
                         break;
+
 
                     default:
                         Console.WriteLine("Este digito é invalido");
                         break;
                 }
 
-                Console.WriteLine();
-                Console.WriteLine("Chegou no final do switch");
+               
 
             }
         }
@@ -110,11 +100,11 @@ namespace Sistema_FichaCadastral
                 nomeUnicoUso = Console.ReadLine();
                 Console.Write("Digite sua idade:");
                 var idade = Console.ReadLine();
-                Console.WriteLine("Digite sua profissao");
+                Console.Write("Digite sua profissao:");
                 profissao = Console.ReadLine();
 
                 Console.Clear();
-                // Verifica se a idade digitada em idade é numero, caso sim, guarda na variavel idade
+                // Verifica se as variaveis digitadas são validas
                 var testaInt = int.TryParse(idade, out idadeEmInt);
                 if ((testaInt != true) || String.IsNullOrEmpty(nomeUnicoUso) || String.IsNullOrEmpty(profissao))
                 {
@@ -154,10 +144,13 @@ namespace Sistema_FichaCadastral
                     lista.Add(new FichaCadastral(nomeUnicoUso, idadeEmInt, profissao));
                     Console.WriteLine("Cadastrado realizado com sucesso. Tecle enter para voltar a tela de inicio");
                     Console.ReadLine();
+                    Console.Clear();
                     break;
 
                 default:
-                    Console.WriteLine("Por gentileza realizar o cadastro novamente");
+                    Console.WriteLine("Por gentileza realizar o cadastro novamente... Tecle enter para continuar");
+                    Console.ReadLine();
+                    Console.Clear();
                     break;
             }
         }

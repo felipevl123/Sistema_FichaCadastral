@@ -47,7 +47,6 @@
     <Compile Include="FichaCadastral.cs" />
     <Compile Include="IIdentity.cs" />
     <Compile Include="ListaDeFichas.cs" />
-    <Compile Include="Menu.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

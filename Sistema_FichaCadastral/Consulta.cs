@@ -36,7 +36,7 @@ namespace Sistema_FichaCadastral
         // Adiciona um filtro e mostra todas as fichas com base no filtro
         public static void FilterFicha(ListaDeFichas<FichaCadastral> listaParaConsulta)
         {
-            Console.WriteLine("Deseja filtrar a lista por:\n" +
+            Console.WriteLine("\nDeseja filtrar a lista por:\n" +
                 "1 - Nome\n" +
                 "2 - Profissão\n" +
                 "3 - Idade");
