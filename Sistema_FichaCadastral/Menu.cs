@@ -1,1 +1,0 @@
-﻿public enum Menu { Visualizar = 1, Editar, Criar, Sair }
