@@ -1,5 +1,7 @@
 # Sistema_FichaCadastral
- Praticando uma ficha cadastral simples em Console
+ Praticando sistema de cadastro simples em Console
 
 O conceito é basicamente tentar fazer uma maneira de cadastrar pessoas, poder visualizar
-quem está cadastrado e poder utilizar isto posteriormente.
+quem está cadastrado e filtrar quem quer que apareça na lista.
+
+O sistema não guarda quem são os cadastrados apos fechado, então sempre apos abrir o programa deve começar novamente.
