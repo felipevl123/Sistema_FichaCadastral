@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Sistema_FichaCadastral
 {
     class Consulta
-    { 
+    {
         // Consulta toda lista
         public static void All_List(ListaDeFichas<FichaCadastral> listaParaConsulta)
         {
@@ -36,13 +36,13 @@ namespace Sistema_FichaCadastral
         // Adiciona um filtro e mostra todas as fichas com base no filtro
         public static void FilterFicha(ListaDeFichas<FichaCadastral> listaParaConsulta)
         {
-            Console.WriteLine("Deseja filtrar a lista por:\n" +
+            Console.WriteLine("\nDeseja filtrar a lista por:\n" +
                 "1 - Nome\n" +
                 "2 - Profissão\n" +
                 "3 - Idade");
             var input = Console.ReadLine();
-            
-            if(input == "1")
+
+            if (input == "1")
             {
                 Console.Write("Digite o nome de usuario que deseja buscar: ");
                 var nome = Console.ReadLine();
@@ -59,7 +59,7 @@ namespace Sistema_FichaCadastral
                 Console.WriteLine("Digite a profissão que deseja buscar: ");
                 var profissao = Console.ReadLine();
 
-                var lista = listaParaConsulta.Take(listaParaConsulta.Count).Where(f => f.Profisao == profissao);
+                var lista = listaParaConsulta.Take(listaParaConsulta.Count).Where(f => f.Profissao == profissao);
                 if (VerificaListaVazia(lista) == false)
                 {
                     IterarPelaLista(lista);
@@ -110,4 +110,3 @@ namespace Sistema_FichaCadastral
             Console.Clear();
         }
     }
-}

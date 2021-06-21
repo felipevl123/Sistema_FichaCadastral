@@ -12,77 +12,41 @@ namespace Sistema_FichaCadastral
         {
             Console.WriteLine("Bem vindo ao Gerenciador de ficha cadastral");
 
-<<<<<<< Updated upstream
-            //Cadastrar();
-
-            bool fechar = false;
-
-            var listaDeCadastrados = new List<FichaCadastral>();
-
-            while(fechar == false)
-            {
-                fechar = SelecaoMenu(fechar);
-            }
-=======
             var listaDeCadastrados = new ListaDeFichas<FichaCadastral>();
 
-            //listaDeCadastrados.Add(new FichaCadastral("Daniel", 18, "Carpinteiro"));
+            Console.WriteLine("Cadastre sua primeira conta\n");
 
-            Console.WriteLine("Realize seu primeiro Cadastro\n");
             Cadastrar(listaDeCadastrados);
 
-            SelecaoMenu(listaDeCadastrados);
+             SelecaoMenu(listaDeCadastrados);
             
->>>>>>> Stashed changes
 
             Console.Clear();
             Console.ReadLine();
 
         }
 
+        
 
-<<<<<<< Updated upstream
-        public static bool SelecaoMenu(bool fechar)
-=======
         public static void SelecaoMenu(ListaDeFichas<FichaCadastral> lista)
->>>>>>> Stashed changes
         {
-            bool fecharMenu = false;
-            while (fecharMenu != true)
+            bool fechar = false;
+            while (fechar != true)
             {
-<<<<<<< Updated upstream
-                case 1:
-                    Console.WriteLine($"Você escolheu {Menu.Visualizar}");
-                    break;
-                case 2:
-                    Console.WriteLine($"Você escolheu {Menu.Editar}");
-                    break;
-                case 3:
-                    Console.WriteLine($"Você escolheu {Menu.Criar}");
-                    break;
-                case 4:
-                    return fechar = true;
-=======
-                Console.WriteLine();
-                Console.WriteLine("Selecione um menu:");
-                Console.WriteLine();
-                Console.WriteLine($"1- Visualizar_Contas 2- Criar Conta 3- Sair");
-            
-                // verifica se o numero digitado é valido
-                var nConsole = Console.ReadLine();
-                int nOutParse;
+                Console.WriteLine("\nSelecione um menu:\n");
+                Console.WriteLine($"1-Visualizar contas  || 2- Criar conta nova  || 3- Sair");
 
-                var validaBool = int.TryParse(nConsole, out nOutParse);
-                if(validaBool == false)
+                var inputConsole = Console.ReadLine();
+                int numeroMenu;
+                var validaMenu = int.TryParse(inputConsole, out numeroMenu);
+                if(validaMenu != true)
                 {
-                nOutParse = 5;
+                    numeroMenu = 4;
                 }
 
-
-                switch (nOutParse)
+                switch (numeroMenu)
                 {
                     case 1:
-                        Console.Clear();
                         Console.WriteLine($"\nVocê escolheu Visualizar");
 
                         Console.WriteLine("\nVisualizar Lista completa - 1" +
@@ -91,16 +55,15 @@ namespace Sistema_FichaCadastral
 
                         if (input == "1")
                             Consulta.All_List(lista);
->>>>>>> Stashed changes
 
                         else if(input == "2")
                             Consulta.FilterFicha(lista);
                         else
                         {
-                            Console.WriteLine("Uma opção valida deve ser selecionada");
-                            Console.Clear();
+                            Console.WriteLine("Digito invalido");
+                            continue;
                         }
-
+                        
                         break;
 
 
@@ -111,7 +74,7 @@ namespace Sistema_FichaCadastral
 
 
                     case 3:
-                        fecharMenu = true;
+                        fechar = true;
                         break;
 
 
@@ -119,102 +82,61 @@ namespace Sistema_FichaCadastral
                         Console.WriteLine("Este digito é invalido");
                         break;
                 }
+
+               
+
             }
-
-            Console.WriteLine();
-            Console.WriteLine("Chegou no final do switch");
-
         }
 
-        public static void Cadastrar(List<FichaCadastral> lista)
+        public static void Cadastrar(ListaDeFichas<FichaCadastral> lista)
         {
             bool valida = false;
-<<<<<<< Updated upstream
-            string nomeUnicoUso;
-=======
             string nomeUnicoUso = null;
-            string profissao = null;
             int idadeEmInt = -1;
->>>>>>> Stashed changes
-
+            string profissao = null;
             while (valida != true)
             {
-                Console.Write("\n\nDigite seu nome de usuario:");
+                Console.Write("Digite seu nome:");
                 nomeUnicoUso = Console.ReadLine();
-<<<<<<< Updated upstream
-                if (String.IsNullOrEmpty(nomeUnicoUso))
-=======
                 Console.Write("Digite sua idade:");
                 var idade = Console.ReadLine();
-                Console.Write("Digite sua profissão:");
+                Console.Write("Digite sua profissao:");
                 profissao = Console.ReadLine();
 
                 Console.Clear();
-
-
-                // Verifica se a idade digitada em idade é numero, caso sim, guarda na variavel idade
+                // Verifica se as variaveis digitadas são validas
                 var testaInt = int.TryParse(idade, out idadeEmInt);
                 if ((testaInt != true) || String.IsNullOrEmpty(nomeUnicoUso) || String.IsNullOrEmpty(profissao))
->>>>>>> Stashed changes
                 {
-                    Console.WriteLine("Nome deve ser preenchido");
+                    Console.WriteLine("Informações incorretas");
+                    Console.WriteLine("Não deve conter espaços em branco e idade deve ser em digito");
                     Console.WriteLine();
                     continue;
                 }
-                Console.Write("Digite sua idade:");
-                var idade = Console.ReadLine();
-                int idadeEmInt;
 
-<<<<<<< Updated upstream
-                valida = int.TryParse(idade, out idadeEmInt);
-                if(valida != true)
-=======
                 
-                // Verifica se ja tem outro usuario com esse nome
+
                 if (lista.Exists(x => x.NomeDeUsuario == nomeUnicoUso))
->>>>>>> Stashed changes
                 {
-                    Console.WriteLine("idade deve ser digitada em digito");
+                    Console.WriteLine($"Já existe uma pessoa com o nome de usuario {nomeUnicoUso}");
+                    Console.WriteLine("Digite novamente as informações");
                     Console.WriteLine();
+                    continue;
                 }
-            }
-            Console.Clear();
 
-
-<<<<<<< Updated upstream
-            
-            // Tentar resolver o problema com ReadLine onde não lê int
-            
-            //if (lista.Exists(x => x.Nome == nomeUnicoUso))
-            {
-
+                valida = true;
             }
 
-            //lista.Add(new FichaCadastral(nomeUnicoUso, idadeUnicoUso));
-            
-        }
-
-        public static bool ValidarDados(string nome)
-        {
-            if (String.IsNullOrEmpty(nome))
-            {
-                Console.WriteLine("Dados impossiveis de serem inseridos");
-                return false;
-=======
             Console.WriteLine($"Informações:\n" +
                 $" Nome {nomeUnicoUso}\n" +
                 $" Idade {idadeEmInt}\n" +
                 $" Profissão {profissao}");
 
-            Console.WriteLine("\nConfirmar dados e salvar? \n" +
+            Console.WriteLine("Confirmar dados e salvar? \n" +
                 "1- Sim.   2-Não");
             var selecao = Console.ReadLine();
             int nSelecao;
-            var validaSelecao = int.TryParse(selecao, out nSelecao);
-            if(validaSelecao == false)
-            {
-                nSelecao = 2;
-            }
+            bool validaSelecao = int.TryParse(selecao, out nSelecao);
 
             switch (nSelecao)
             {
@@ -226,18 +148,11 @@ namespace Sistema_FichaCadastral
                     break;
 
                 default:
-                    Console.WriteLine("Por gentileza realizar o cadastro novamente");
+                    Console.WriteLine("Por gentileza realizar o cadastro novamente... Tecle enter para continuar");
                     Console.ReadLine();
                     Console.Clear();
                     break;
->>>>>>> Stashed changes
             }
-            return true;
-
         }
-
-
-
-
     }
 }

@@ -7,42 +7,31 @@ using System.Threading.Tasks;
 
 namespace Sistema_FichaCadastral
 {
-    public class FichaCadastral 
+    public class FichaCadastral : IIdentity, IComparable
     {
 
         public string NomeDeUsuario { get; private set; }
         public int Idade { get; private set; }
-        public string Profisao { get; private set; }
-        public int IdCadastro { get; }
+        public string Profissao { get; private set; }
+        public int IdCadastro { get ; set ; }
 
         public FichaCadastral(string nome, int idade, string profissao)
         {
-<<<<<<< Updated upstream
-            Nome = nome;
-            Idade = idade;
-            var randNum = new Random();
-
-            IdCadastro = 100 * idade + (randNum.Next());
-=======
             NomeDeUsuario = nome;    
             Idade = idade;
-            Profisao = profissao;
+            Profissao = profissao;
         }
 
         public override string ToString()
         {
-            return $"Nome: {NomeDeUsuario}, Idade: {Idade}, Id de cadastro {IdCadastro}, Profissão {Profisao}";
->>>>>>> Stashed changes
+            return $"Nome: {NomeDeUsuario}, Idade: {Idade}, Id de cadastro {IdCadastro}, Profisão {Profissao}";
         }
 
-        
+        public int CompareTo(object obj)
+        {
+            var ficha = (FichaCadastral)obj;
 
-<<<<<<< Updated upstream
-        
-       
-=======
             return NomeDeUsuario.CompareTo(ficha.NomeDeUsuario);
         }
->>>>>>> Stashed changes
     }
 }
